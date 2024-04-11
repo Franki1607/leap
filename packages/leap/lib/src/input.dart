@@ -160,14 +160,14 @@ class SimpleKeyboardInput extends Component with KeyboardHandler {
 
   @override
   bool onKeyEvent(KeyEvent keyEvent, Set<LogicalKeyboardKey> keysPressed) {
-    // Ignore irrelevant keys.
-    if (relevantKeys.contains(keyEvent.physicalKey)) {
-      if (keyEvent is KeyDownEvent) {
+   // Ignore irrelevant keys.
+   if (relevantKeys.contains(keyEvent.physicalKey)) {
+      if (keyEvent.isKeyPressed(keyEvent.physicalKey)) {
         keysDown.add(keyEvent.physicalKey);
-      } else if (keyEvent is KeyUpEvent) {
+      } else {
         keysDown.remove(keyEvent.physicalKey);
       }
-    }
-    return true;
+   }
+   return true;
   }
 }
